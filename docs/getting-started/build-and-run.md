@@ -2,6 +2,6 @@
 icon: lucide/play
 ---
 
-# 跑起来
+# 构建与运行
 
 TODO

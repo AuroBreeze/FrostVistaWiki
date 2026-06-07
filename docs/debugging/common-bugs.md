@@ -2,6 +2,6 @@
 icon: lucide/bug
 ---
 
-# 测试与调试
+# 常见 Bug
 
 TODO

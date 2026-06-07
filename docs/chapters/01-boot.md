@@ -2,6 +2,6 @@
 icon: lucide/power
 ---
 
-# 启动链
+# 启动
 
 TODO

@@ -24,8 +24,8 @@ site_description = "A new project generated from the default template project."
 # Read more: https://zensical.org/docs/setup/basics/#site_author
 site_author = "<your name here>"
 
-repo_url = "https://github.com/AuroBreeze/FrostVistaOS"
-repo_name = "AuroBreeze/FrostVistaOS"
+repo_url = "https://github.com/AuroBreeze/FrostVistaWiki"
+repo_name = "AuroBreeze/FrostVistaWiki"
 
 # The site_url is the canonical URL for your site. When building online
 # documentation you should set this.
@@ -53,19 +53,36 @@ Copyright &copy; 2026 The authors
 # ]
 nav = [
   { "首页" = "index.md" },
-  { "学习路径" = [
-    { "0. 阅读路线" = "guide/index.md" },
-    { "1. 跑起来" = "guide/quickstart.md" },
-    { "2. 项目全局图" = "guide/project-map.md" },
-    { "3. 启动链" = "guide/boot.md" },
-    { "4. 内存与 Sv39" = "guide/memory.md" },
-    { "5. 进程与调度" = "guide/process.md" },
-    { "6. 系统调用" = "guide/syscall.md" },
-    { "7. VFS 与文件描述符" = "guide/vfs.md" },
-    { "8. 文件系统" = "guide/filesystems.md" },
-    { "9. Pipe 与 Shell" = "guide/shell.md" },
-    { "10. 测试与调试" = "guide/debugging.md" },
-    { "11. Roadmap" = "guide/roadmap.md" },
+  { "入门" = [
+    { "构建与运行" = "getting-started/build-and-run.md" },
+    { "QEMU 与 GDB" = "getting-started/qemu-gdb.md" },
+    { "第一个用户程序" = "getting-started/first-user-program.md" },
+  ] },
+  { "教程" = [
+    { "总览" = "chapters/00-overview.md" },
+    { "启动" = "chapters/01-boot.md" },
+    { "分页" = "chapters/02-paging.md" },
+    { "Trap" = "chapters/03-trap.md" },
+    { "进程" = "chapters/04-process.md" },
+    { "系统调用" = "chapters/05-syscall.md" },
+    { "VFS" = "chapters/06-vfs.md" },
+    { "Easy-FS" = "chapters/07-easyfs.md" },
+    { "Pipe" = "chapters/08-pipe.md" },
+    { "Shell" = "chapters/09-shell.md" },
+  ] },
+  { "实验" = [
+    { "Lab 0 环境配置" = "labs/lab0-env.md" },
+    { "Lab 1 Hello Kernel" = "labs/lab1-hello-kernel.md" },
+    { "Lab 2 Syscall" = "labs/lab2-syscall.md" },
+  ] },
+  { "调试" = [
+    { "GDB" = "debugging/gdb.md" },
+    { "Panic 排查" = "debugging/panic-guide.md" },
+    { "常见 Bug" = "debugging/common-bugs.md" },
+  ] },
+  { "参考" = [
+    { "Syscall 表" = "reference/syscall-table.md" },
+    { "术语表" = "reference/glossary.md" },
   ] },
 ]
 
