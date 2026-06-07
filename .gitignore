@@ -1,0 +1,16 @@
+# Zensical build output
+site/
+
+# Zensical cache
+.cache/
+
+# Python cache
+__pycache__/
+*.py[cod]
+
+# Editor and OS noise
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
