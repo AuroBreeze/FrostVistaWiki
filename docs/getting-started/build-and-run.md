@@ -18,6 +18,39 @@ make qemu BOOT=opensbi ROOTFS=easyfs FS_LIST="easyfs devtmpfs" TEST=fvsh
 
 如果一切正常，你应该能看到内核启动日志，并进入 FrostVista shell。
 
+运行结果类似如下：
+```text
+[   0.016] [ INFO] Paging enable successfully
+------------------------------------------------------------
+    ______                __ _    ___      __       
+   / ____/________  _____/ /| |  / (_)____/ /_____ _
+  / /_  / ___/ __ \/ ___/ __/ | / / / ___/ __/ __ `/
+ / __/ / /  / /_/ (__  ) /_ | |/ / (__  ) /_/ /_/ / 
+/_/   /_/   \____/____/\__/ |___/_/____/\__/\__,_/
+
+RISC-V 64  |  Sv39  |  v1.0
+------------------------------------------------------------
+[   0.023] [ INFO] Enable time interrupts...
+[   0.024] [ INFO] Timer init done
+------------------------------------------------------------
+  ◆ Platform Init
+[   0.026] [ INFO] kalloc_init start
+[   0.588] [ INFO] Total Memory Pages: 32531
+[   0.589] [ INFO] kalloc_init end
+[   0.589] [ INFO] clear low memory mappings
+[   0.590] [ INFO] clear low memory mappings done
+[   0.591] [ INFO] Hello FrostVista OS!
+------------------------------------------------------------
+  ◆ Process Subsystem
+------------------------------------------------------------
+  ◆ Filesystem & Devices
+[   0.595] [ INFO] virtio-blk initialized, mmio version 2
+------------------------------------------------------------
+  ◆ Kernel Ready
+Hello from the FrostVista shell!
+fvsh>
+```
+
 `make qemu` 会依次完成：
 
 1. 清理旧的构建产物。
