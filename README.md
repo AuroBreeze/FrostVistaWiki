@@ -43,25 +43,35 @@ Then follow the main chapters:
 
 ## Local Preview
 
-Install Zensical:
+This project uses the existing `uv` environment in the repository. Serve locally:
 
 ```bash
-pip install zensical
-```
-
-Serve locally:
-
-```bash
-zensical serve
+uv run zensical serve
 ```
 
 Build the static site:
 
 ```bash
-zensical build --clean
+uv run zensical build --clean
 ```
 
 The generated output is written to `site/` and is ignored by git.
+
+## Versioned Publishing
+
+FrostVista Wiki versions follow the Wiki itself, not FrostVistaOS. The current documentation version is `dev`; keep `latest` as the default alias while the Wiki is still in development.
+
+Publish a new Wiki version:
+
+```bash
+uv run --with git+https://github.com/squidfunk/mike.git mike deploy --push --update-aliases dev latest
+```
+
+Set the root of the GitHub Pages site to redirect to `latest`:
+
+```bash
+uv run --with git+https://github.com/squidfunk/mike.git mike set-default --push latest
+```
 
 ## Structure
 
@@ -99,5 +109,3 @@ projects, including:
 * [xv6](https://pdos.csail.mit.edu/6.828/2023/xv6.html)
 * [Linux Kernel](https://www.kernel.org/)
 * [System V ABI](https://refspecs.linuxfoundation.org/elf/gabi4+/contents.html)
-
-

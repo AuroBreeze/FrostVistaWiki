@@ -30,7 +30,7 @@ repo_name = "AuroBreeze/FrostVistaWiki"
 # The site_url is the canonical URL for your site. When building online
 # documentation you should set this.
 # Read more: https://zensical.org/docs/setup/basics/#site_url
-#site_url = "https://www.example.com/"
+site_url = "https://aurobreeze.github.io/FrostVistaWiki/"
 
 # The copyright notice appears in the page footer and can contain an HTML
 # fragment.
@@ -52,8 +52,8 @@ Copyright &copy; 2026 The authors
 #   { "Markdown in 5min" = "markdown.md" },
 # ]
 nav = [
-  { "前言" = "preface.md" },
   { "首页" = "index.md" },
+  { "前言" = "preface.md" },
   { "入门" = [
     { "环境配置" = "getting-started/environment.md" },
     { "构建与运行" = "getting-started/build-and-run.md" },
@@ -122,7 +122,7 @@ extra_javascript = ["javascripts/51la.js"]
 # Read more:
 # - https://zensical.org/docs/customization/#extending-the-theme
 #
-#custom_dir = "overrides"
+custom_dir = "overrides"
 
 # With the "favicon" option you can set your own image to use as the icon
 # browsers will use in the browser title bar or tab bar. The path provided
@@ -342,6 +342,11 @@ toggle.name = "Switch to light mode"
 #[[project.extra.social]]
 #icon = "fontawesome/brands/github"
 #link = "https://github.com/user/repo"
+
+[project.extra.version]
+provider = "mike"
+default = "latest"
+alias = true
 
 # ----------------------------------------------------------------------------
 # In this section you can configure the Markdown extensions that are used when
