@@ -11,6 +11,9 @@ icon: lucide/settings
 - Emulator：QEMU virt
 - Kernel：FrostVistaOS
 
+!!! note
+    如果你是第一次接触交叉编译器等工具，先不要关心这些工具的工作原理，想要了解可以查看工具页面，或自行搜索。
+
 ## 目标
 
 配置完成后，应该能完成以下事情：

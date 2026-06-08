@@ -76,6 +76,10 @@ nav = [
     { "Lab 1 Hello Kernel" = "labs/lab1-hello-kernel.md" },
     { "Lab 2 Syscall" = "labs/lab2-syscall.md" },
   ] },
+  { "工具" = [
+    { "交叉编译器" = "tools/cross-compiler.md" },
+    { "Linker 与 ELF" = "tools/linker-elf.md" },
+  ] },
   { "调试" = [
     { "GDB" = "debugging/gdb.md" },
     { "Panic 排查" = "debugging/panic-guide.md" },
