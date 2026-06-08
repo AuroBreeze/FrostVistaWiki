@@ -86,6 +86,7 @@ nav = [
     { "常见 Bug" = "debugging/common-bugs.md" },
   ] },
   { "参考" = [
+    {"在线资源参考" = "reference/online-resources.md" },
     { "Syscall 表" = "reference/syscall-table.md" },
     { "术语表" = "reference/glossary.md" },
   ] },
