@@ -52,8 +52,10 @@ Copyright &copy; 2026 The authors
 #   { "Markdown in 5min" = "markdown.md" },
 # ]
 nav = [
+  { "前言" = "preface.md" },
   { "首页" = "index.md" },
   { "入门" = [
+    { "环境配置" = "getting-started/environment.md" },
     { "构建与运行" = "getting-started/build-and-run.md" },
     { "QEMU 与 GDB" = "getting-started/qemu-gdb.md" },
     { "第一个用户程序" = "getting-started/first-user-program.md" },
