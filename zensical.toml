@@ -55,10 +55,9 @@ nav = [
   { "首页" = "index.md" },
   { "前言" = "preface.md" },
   { "入门" = [
+    { "如何使用" = "getting-started/howtouse.md" },
     { "环境配置" = "getting-started/environment.md" },
     { "构建与运行" = "getting-started/build-and-run.md" },
-    { "QEMU 与 GDB" = "getting-started/qemu-gdb.md" },
-    { "第一个用户程序" = "getting-started/first-user-program.md" },
   ] },
   { "教程" = [
     { "总览" = "chapters/00-overview.md" },
