@@ -49,6 +49,14 @@ icon: lucide/external-link
 
 ## rCore / 教学 OS
 
+- [Operating Systems: Three Easy Pieces](https://pages.cs.wisc.edu/~remzi/OSTEP/)
+
+  也就是常说的 OSTEP /《操作系统导论》。查进程、调度、虚拟内存、并发、文件系统这些基础概念时很适合。它不是围绕某个具体教学内核写的，但能帮你先建立“为什么 OS 要有这些抽象”的背景。
+
+- [《操作系统导论》中文翻译](https://github.com/remzi-arpacidusseau/ostep-translations/tree/master/chinese)
+
+  OSTEP 的中文翻译版本。英文原文更稳定，中文翻译适合第一次建立概念时对照阅读。
+
 - [OSDev Wiki](https://wiki.osdev.org/Main_Page)
 
   查从零写 OS 时的实践资料。比如 boot、linker script、ELF、paging、interrupt、filesystem、toolchain 等主题。它覆盖面很广，但内容质量和新旧程度不完全一致，建议和规范、源码一起对照看。
@@ -122,7 +130,8 @@ icon: lucide/external-link
 3. 看不懂函数调用和 syscall 参数：先查 RISC-V ELF psABI。
 4. 看不懂块设备和文件系统镜像：先查 VirtIO 1.2 Specification 和 QEMU RISC-V virt machine。
 5. 想找另一个教学 OS 对照：先看 rCore Tutorial Book v3 或 xv6-riscv Book。
-6. 想查从零写 OS 的实践路线：先看 OSDev Wiki，再回到具体规范验证边界。
-7. 怀疑编译优化影响调试：先查 GCC Optimize Options，再对照项目里的 `BUILD=release` / `BUILD=debug`。
+6. 想补 OS 基础概念：先看 OSTEP /《操作系统导论》的对应章节。
+7. 想查从零写 OS 的实践路线：先看 OSDev Wiki，再回到具体规范验证边界。
+8. 怀疑编译优化影响调试：先查 GCC Optimize Options，再对照项目里的 `BUILD=release` / `BUILD=debug`。
 
 最后需要注意的是：规范负责告诉你“边界是什么”，源码负责告诉你“这个项目实际怎么做”。两边最好对照着看，不要只看其中一边。
