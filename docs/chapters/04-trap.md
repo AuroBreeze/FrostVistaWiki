@@ -192,6 +192,47 @@ csrrw sp, sscratch, sp
 
 > ⚠️ 为什么必须用 `csrrw` 而不是 `mv sp, sscratch`？因为 `mv` 会丢用户 sp。`csrrw` 是原子交换——旧 sp 被安全地保存在 `sscratch` 里，不会丢。
 
+#### sscratch 是谁填进去的
+
+这里有一个关键问题：**用户程序第一次运行之前，`sscratch` 里到底有没有东西？**
+
+RISC-V privileged architecture manual 里对 `sscratch` 的描述非常简短：
+
+> "The `sscratch` register is an SXLEN-bit read/write register, dedicated for use by the supervisor. **Typically, `sscratch` is used to hold a pointer to the hart-local supervisor context while the hart is executing user code.** At the beginning of a trap handler, `sscratch` is swapped with a user register to provide an initial working register."
+
+翻译：`sscratch` 是一个"给 supervisor 随便用"的寄存器。它没有任何硬件规定的用途——和 `stvec`、`sepc` 不同，不是 CPU 在 trap 时自动读写的。手册只说"通常用它保存内核上下文指针"。
+
+这意味着两件事：
+
+1. **CPU 上电后 `sscratch` 是 0。** 硬件不会往里写任何东西。
+2. **必须由软件在合适的时机往里写值。** 如果没人写，`sscratch` 就一直空着。
+
+FrostVistaOS 选择在**调度器**里写它。在 `scheduler()` 中，每次准备切换到用户进程之前：
+
+```c
+// kernel/core/proc.c — scheduler()
+w_sscratch(p->kstack + PGSIZE);   // sscratch = 当前进程的内核栈顶
+
+w_satp(MAKE_SATP(VA2PA((uint64)p->pagetable)));
+sfence_vma();
+
+swtch(&c->context, p->context);   // 切换到进程，最终进入用户态
+```
+
+所以流程是：
+
+```text
+系统第一次启动时:         sscratch = 0（CSR 复位值）
+scheduler 选择第一个进程:  w_sscratch(kstack + PGSIZE) → sscratch = 内核栈顶
+swtch → usertrapret → userret → sret → 用户在 U mode 运行
+此时:                     sscratch = 内核栈顶（静静地等着下次 trap）
+用户触发 ecall:           csrrw sp, sscratch, sp → 换栈成功！
+```
+
+`scheduler()` 写一次，之后每次 `userret` 返回用户态时也会把 `sscratch` 设回内核栈顶——保证下次 trap 时它总是有值。
+
+> ⚠️ 如果你在 `uservec` 里发现 `sscratch` 是 0 或其他非法值，说明调度器还没跑、或者进程初始化有问题——`sscratch` 不会被硬件自动填充，它完全是软件维护的。
+
 ### 第二步：在栈上留出 trapframe 空间
 
 ```asm
@@ -552,7 +593,7 @@ ecall
 
 ## 下一步
 
-- [进程](04-process.md)：调度器怎么从 trap 里长出来、fork/exec 怎么和页表交互；
-- [系统调用](05-syscall.md)：syscall 分发表的完整实现；
+- [进程](05-process.md)：调度器怎么从 trap 里长出来、fork/exec 怎么和页表交互；
+- [系统调用](06-syscall.md)：syscall 分发表的完整实现；
 - [调试故事：ecall 之后一直触发 cause 5](../debugging/story-1-timer-not-exception.md)：timer interrupt 和 exception 的混淆；
 - [RISC-V Trap Codes](../reference/trap-codes.md)：查 scause code。

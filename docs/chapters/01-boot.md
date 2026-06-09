@@ -412,7 +412,7 @@ switch_to_high_address(target, KERNEL_VIRT_OFFSET);
 
 这里你可能会问：为什么还要“切到高地址”？
 
-简单说，FrostVistaOS 的内核最终希望运行在高虚拟地址区域，而不是一直运行在 QEMU 加载它的低物理地址附近。这个问题会在[分页](02-paging.md)里继续讲。
+简单说，FrostVistaOS 的内核最终希望运行在高虚拟地址区域，而不是一直运行在 QEMU 加载它的低物理地址附近。这个问题会在[分页](03-paging.md)里继续讲。
 
 ## high_mode_start：系统开始长出内核形状
 
@@ -502,8 +502,8 @@ linker script 找到 _start
 
 接下来可以继续看：
 
-- [分页](02-paging.md)：为什么要切到高地址、`satp` 和页表怎么工作；
-- [Trap](03-trap.md)：中断、异常、syscall 如何进入内核；
+- [分页](03-paging.md)：为什么要切到高地址、`satp` 和页表怎么工作；
+- [Trap](04-trap.md)：中断、异常、syscall 如何进入内核；
 - [RISC-V Trap Codes](../reference/trap-codes.md)：查 `mcause` / `scause` code；
 - [QEMU](../tools/qemu.md)：理解 QEMU 如何加载并运行 FrostVistaOS；
 - [Linker Script 与 ELF](../tools/linker-elf.md)：理解 `_start` 和内核布局从哪里来。

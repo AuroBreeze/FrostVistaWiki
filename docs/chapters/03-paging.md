@@ -800,7 +800,7 @@ VA = PA（没开分页）
 
 ## 下一步
 
-- [Trap](03-trap.md)：中断、异常、系统调用如何进入内核，陷阱向量和上下文保存；
-- [进程](04-process.md)：用户进程如何创建、用户页表怎么用、fork 和 exec 的页表操作；
+- [Trap](04-trap.md)：中断、异常、系统调用如何进入内核，陷阱向量和上下文保存；
+- [进程](05-process.md)：用户进程如何创建、用户页表怎么用、fork 和 exec 的页表操作；
 - [RISC-V Trap Codes](../reference/trap-codes.md)：查 `mcause` / `scause` code；
 - [Linker Script 与 ELF](../tools/linker-elf.md)：理解 VMA/LMA 和 `> VIRT AT> PHYSMEM`。

@@ -101,6 +101,12 @@ icon: lucide/external-link
 
   查 OpenSBI、SBI call、M mode 到 S mode 的启动交接时用。如果使用 `BOOT=opensbi` 路径，这里会比直接猜启动流程可靠。
 
+## 硬件与设备
+
+- [UART 16550 Data Sheet](https://uart16550.readthedocs.io/_/downloads/en/latest/pdf/)
+
+  查 UART 16550 的寄存器定义、初始化流程、FIFO 控制、中断使能和状态检查时用。FrostVistaOS 的 `uart_init()`、`uart_putc()`、LSR/THR/RHR/IER/FCR/LCR 等寄存器偏移，都以 16550 手册为准。读[启动骨架](../chapters/02-startup-framework.md)时会遇到。
+
 ## 调试与工具
 
 - [GDB Documentation](https://sourceware.org/gdb/documentation/)

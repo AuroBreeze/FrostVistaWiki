@@ -351,4 +351,4 @@ pagetable_t next = (pagetable_t)PA2VA(PPN);
 ---
 
 - [返回 Lab 2 题目](lab2-paging.md)
-- [返回分页教程](../chapters/02-paging.md)
+- [返回分页教程](../chapters/03-paging.md)
