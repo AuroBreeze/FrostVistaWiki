@@ -73,7 +73,7 @@ nav = [
   ] },
   { "实验" = [
     { "Lab 0 环境配置" = "labs/lab0-env.md" },
-    { "Lab 1 Hello Kernel" = "labs/lab1-hello-kernel.md" },
+    { "Lab 1 Hello Boot Log" = "labs/lab1-hello-kernel.md" },
     { "Lab 2 Syscall" = "labs/lab2-syscall.md" },
   ] },
   { "参考答案" = [
