@@ -73,16 +73,6 @@ nav = [
     { "Pipe" = "chapters/10-pipe.md" },
     { "Shell" = "chapters/11-shell.md" },
   ] },
-  { "实验" = [
-    { "Lab 0 环境配置" = "labs/lab0-env.md" },
-    { "Lab 1 Hello Boot Log" = "labs/lab1-hello-kernel.md" },
-    { "Lab 2 分页" = "labs/lab2-paging.md" },
-    { "Lab 3 Syscall" = "labs/lab2-syscall.md" },
-  ] },
-  { "参考答案" = [
-    { "Lab 1" = "answer/lab1-answer.md" },
-    { "Lab 2" = "answer/lab2-paging-answer.md" },
-  ] },
   { "工具" = [
     { "Make" = "tools/make.md" },
     { "交叉编译器" = "tools/cross-compiler.md" },
