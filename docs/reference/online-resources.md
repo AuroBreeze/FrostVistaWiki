@@ -49,6 +49,14 @@ icon: lucide/external-link
 
 ## rCore / 教学 OS
 
+- [OSDev Wiki](https://wiki.osdev.org/Main_Page)
+
+  查从零写 OS 时的实践资料。比如 boot、linker script、ELF、paging、interrupt、filesystem、toolchain 等主题。它覆盖面很广，但内容质量和新旧程度不完全一致，建议和规范、源码一起对照看。
+
+- [OSDev Wiki: Bare Bones](https://wiki.osdev.org/Bare_Bones)
+
+  查“最小内核如何从编译到启动”的整体流程时用。虽然它主要以 x86 为例，但对于理解 freestanding、linker script、启动入口这些概念仍然有参考价值。
+
 - [rCore Tutorial Book v3](https://rcore-os.cn/rCore-Tutorial-Book-v3/)
 
   中文 RISC-V 教学 OS 资料。它和 FrostVistaOS 不完全一样，但在启动、地址空间、trap、进程、文件系统这些主题上有很好的对照价值。
@@ -79,6 +87,8 @@ icon: lucide/external-link
 
   查 QEMU 命令行参数、machine、device、monitor、GDB stub 时用。遇到启动参数或调试参数不确定，可以从这里找。
 
+  本项目的 QEMU 参数讲解见 [QEMU](../tools/qemu.md)。
+
 - [OpenSBI Documentation](https://github.com/riscv-software-src/opensbi/tree/master/docs)
 
   查 OpenSBI、SBI call、M mode 到 S mode 的启动交接时用。如果使用 `BOOT=opensbi` 路径，这里会比直接猜启动流程可靠。
@@ -93,9 +103,15 @@ icon: lucide/external-link
 
   查 Makefile 变量、规则、依赖、模式规则时用。读 FrostVistaOS 构建系统时会遇到。
 
+  本项目的 Makefile 拆解见 [Make](../tools/make.md)。
+
 - [GCC Online Documentation](https://gcc.gnu.org/onlinedocs/)
 
   查 `-ffreestanding`、`-nostdlib`、`-march`、`-mabi` 等编译参数时用。写内核时，编译器默认行为经常需要显式关掉。
+
+- [GCC Optimize Options](https://gcc.gnu.org/onlinedocs/gcc/Optimize-Options.html)
+
+  查 `-O0`、`-O1`、`-O2`、`-Og`、`-Os` 等优化等级和具体优化开关时用。读 FrostVistaOS 的 `BUILD=release` / `BUILD=debug`，或者怀疑优化影响调试现象时，可以先看这里。
 
 ## 建议阅读顺序
 
@@ -106,5 +122,7 @@ icon: lucide/external-link
 3. 看不懂函数调用和 syscall 参数：先查 RISC-V ELF psABI。
 4. 看不懂块设备和文件系统镜像：先查 VirtIO 1.2 Specification 和 QEMU RISC-V virt machine。
 5. 想找另一个教学 OS 对照：先看 rCore Tutorial Book v3 或 xv6-riscv Book。
+6. 想查从零写 OS 的实践路线：先看 OSDev Wiki，再回到具体规范验证边界。
+7. 怀疑编译优化影响调试：先查 GCC Optimize Options，再对照项目里的 `BUILD=release` / `BUILD=debug`。
 
 最后需要注意的是：规范负责告诉你“边界是什么”，源码负责告诉你“这个项目实际怎么做”。两边最好对照着看，不要只看其中一边。

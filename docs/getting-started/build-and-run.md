@@ -8,6 +8,8 @@ icon: lucide/play
 
 FrostVistaOS 推荐通过项目提供的 `make` 入口构建和运行。不要手动拼接 QEMU 命令，除非你正在调试 Makefile 本身。
 
+如果你想理解 `make qemu` 背后的 QEMU 参数，可以先跑通本页命令，再阅读[QEMU](../tools/qemu.md)。
+
 ## 最短路径
 
 启动 OpenSBI + Easy-FS + FrostVista shell：
@@ -126,6 +128,8 @@ test/test_<name>.c
 | `CROSS` | `riscv64-elf` | 手动指定 RISC-V 工具链前缀 |
 
 Makefile 默认值来自 `mk/config.mk`：
+
+想理解这些变量如何一路影响编译、镜像和 QEMU，可以阅读[Make](../tools/make.md)。
 
 ```text
 BOOT=bare

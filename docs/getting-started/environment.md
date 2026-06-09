@@ -159,6 +159,8 @@ qemu-system-riscv64 --version
 qemu-system-riscv64 -machine virt -nographic ...
 ```
 
+如果你想理解这些参数在 FrostVistaOS 里分别做什么，可以继续阅读[QEMU](../tools/qemu.md)。
+
 ### GDB
 
 GDB 用于连接 QEMU 的 remote debugging stub。
