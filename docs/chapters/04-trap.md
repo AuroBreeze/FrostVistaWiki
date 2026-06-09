@@ -593,7 +593,8 @@ ecall
 
 ## 下一步
 
-- [进程](05-process.md)：调度器怎么从 trap 里长出来、fork/exec 怎么和页表交互；
-- [系统调用](06-syscall.md)：syscall 分发表的完整实现；
+- [锁](05-lock.md)：timer interrupt、调度和共享内核状态为什么需要锁；
+- [进程](06-process.md)：调度器怎么从 trap 里长出来、fork/exec 怎么和页表交互；
+- [系统调用](07-syscall.md)：syscall 分发表的完整实现；
 - [调试故事：ecall 之后一直触发 cause 5](../debugging/story-1-timer-not-exception.md)：timer interrupt 和 exception 的混淆；
 - [RISC-V Trap Codes](../reference/trap-codes.md)：查 scause code。
