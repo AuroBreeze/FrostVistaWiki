@@ -74,10 +74,12 @@ nav = [
   { "实验" = [
     { "Lab 0 环境配置" = "labs/lab0-env.md" },
     { "Lab 1 Hello Boot Log" = "labs/lab1-hello-kernel.md" },
-    { "Lab 2 Syscall" = "labs/lab2-syscall.md" },
+    { "Lab 2 分页" = "labs/lab2-paging.md" },
+    { "Lab 3 Syscall" = "labs/lab2-syscall.md" },
   ] },
   { "参考答案" = [
-    { "lab 1" = "answer/lab1-answer.md" },
+    { "Lab 1" = "answer/lab1-answer.md" },
+    { "Lab 2" = "answer/lab2-paging-answer.md" },
   ] },
   { "工具" = [
     { "Make" = "tools/make.md" },
@@ -96,6 +98,11 @@ nav = [
     { "Syscall 表" = "reference/syscall-table.md" },
     { "术语表" = "reference/glossary.md" },
   ] },
+  { "其他文章"= [
+    { "调试故事: Timer 不是 Exception" = "debugging/story-1-timer-not-exception.md" },
+    { "调试故事: 加 fork 坏了 write" = "debugging/story-2-syscall-linker.md" },
+    { "调试故事: -O0崩了 -O2没事" = "debugging/story-3-o0-vs-o2.md" },
+  ]}
 ]
 
 # With the "extra_css" option you can add your own CSS styling to customize
