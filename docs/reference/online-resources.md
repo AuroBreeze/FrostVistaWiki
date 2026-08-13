@@ -105,7 +105,7 @@ icon: lucide/external-link
 
 - [UART 16550 Data Sheet](https://uart16550.readthedocs.io/_/downloads/en/latest/pdf/)
 
-  查 UART 16550 的寄存器定义、初始化流程、FIFO 控制、中断使能和状态检查时用。FrostVistaOS 的 `uart_init()`、`uart_putc()`、LSR/THR/RHR/IER/FCR/LCR 等寄存器偏移，都以 16550 手册为准。读[启动骨架](../chapters/02-startup-framework.md)时会遇到。
+  查 UART 16550 的寄存器定义、初始化流程、FIFO 控制、中断使能和状态检查时用。FrostVistaOS 的 `uart_init()`、`uart_putc()`、LSR/THR/RHR/IER/FCR/LCR 等寄存器偏移，都以 16550 手册为准。会在内核启动阶段遇到。
 
 ## 调试与工具
 

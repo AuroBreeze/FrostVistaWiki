@@ -52,37 +52,11 @@ Copyright &copy; 2026 The authors
 #   { "Markdown in 5min" = "markdown.md" },
 # ]
 nav = [
-  { "首页" = "index.md" },
-  { "前言" = "preface.md" },
-  { "入门" = [
-    { "如何使用" = "getting-started/howtouse.md" },
-    { "环境配置" = "getting-started/environment.md" },
-    { "构建与运行" = "getting-started/build-and-run.md" },
-  ] },
-  { "教程" = [
-    { "总览" = "chapters/00-overview.md" },
-    { "启动" = "chapters/01-boot.md" },
-    { "启动骨架" = "chapters/02-startup-framework.md" },
-    { "分页" = "chapters/03-paging.md" },
-    { "Trap" = "chapters/04-trap.md" },
-    { "锁" = "chapters/05-lock.md" },
-    { "进程" = "chapters/06-process.md" },
-    { "系统调用" = "chapters/07-syscall.md" },
-    { "VFS" = "chapters/08-vfs.md" },
-    { "Easy-FS" = "chapters/09-easyfs.md" },
-    { "Pipe" = "chapters/10-pipe.md" },
-    { "Shell" = "chapters/11-shell.md" },
-  ] },
   { "工具" = [
     { "Make" = "tools/make.md" },
     { "交叉编译器" = "tools/cross-compiler.md" },
     { "Linker 与 ELF" = "tools/linker-elf.md" },
     { "QEMU" = "tools/qemu.md"}
-  ] },
-  { "调试" = [
-    { "GDB" = "debugging/gdb.md" },
-    { "Panic 排查" = "debugging/panic-guide.md" },
-    { "常见 Bug" = "debugging/common-bugs.md" },
   ] },
   { "参考" = [
     {"在线资源参考" = "reference/online-resources.md" },

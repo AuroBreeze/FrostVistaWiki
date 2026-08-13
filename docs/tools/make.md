@@ -532,7 +532,3 @@ gdb-multiarch build/kernel.elf -ex 'target remote :1234'
 - [交叉编译器](cross-compiler.md)
 - [Linker Script 与 ELF](linker-elf.md)
 - [QEMU](qemu.md)
-
-如果你想先跑通项目，可以回到：
-
-- [构建与运行](../getting-started/build-and-run.md)

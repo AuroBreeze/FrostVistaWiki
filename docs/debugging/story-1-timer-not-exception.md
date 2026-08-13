@@ -147,6 +147,5 @@ void usertrapret() {
 
 ---
 
-- [返回调试首页](../index.md)
 - [下一个调试故事：加 fork 导致 syscall 数组坏了](story-2-syscall-linker.md)
 - [RISC-V Trap Codes](../reference/trap-codes.md)

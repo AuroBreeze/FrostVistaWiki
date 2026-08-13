@@ -8,6 +8,10 @@ site/
 __pycache__/
 *.py[cod]
 
+# Package build artifacts
+*.egg-info/
+.venv/
+
 # Editor and OS noise
 .DS_Store
 Thumbs.db

@@ -372,7 +372,4 @@ make qemu BOOT=opensbi ROOTFS=easyfs FS_LIST="easyfs devtmpfs" TEST=fvsh
 
 - [交叉编译器](cross-compiler.md)
 - [Linker Script 与 ELF](linker-elf.md)
-
-如果你只想先跑起来，可以回到：
-
-- [构建与运行](../getting-started/build-and-run.md)
+- [Make](make.md)

@@ -154,6 +154,5 @@ SECTIONS
 
 ---
 
-- [返回调试首页](../index.md)
 - [上一个调试故事：ecall 之后一直触发 cause 5](story-1-timer-not-exception.md)
 - [Linker Script 与 ELF](../tools/linker-elf.md)

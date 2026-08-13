@@ -128,4 +128,4 @@ w_medeleg((1 << 1) | (1 << 2) | (1 << 3) | (1 << 8) |
 ## 相关资料
 
 - [RISC-V Privileged Architecture](online-resources.md#risc-v)
-- [Trap](../chapters/04-trap.md)
+- [调试故事：ecall 之后一直触发 cause 5](../debugging/story-1-timer-not-exception.md)

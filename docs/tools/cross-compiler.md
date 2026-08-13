@@ -363,7 +363,7 @@ riscv64-linux-gnu-gcc --version
 make qemu CROSS=riscv64-unknown-elf
 ```
 
-如果完全没有 RISC-V GCC，请回到[环境配置](../getting-started/environment.md)安装工具链。
+如果完全没有 RISC-V GCC，请先安装一套 RISC-V 工具链再继续。
 
 ### CROSS 写错
 
@@ -434,5 +434,4 @@ riscv64-elf-gcc -v
 ## 下一步
 
 - [Linker 与 ELF](linker-elf.md) — 理解交叉编译产物如何被链接成 `kernel.elf`；
-- [环境配置](../getting-started/environment.md) — 安装和检查工具链；
-- [构建与运行](../getting-started/build-and-run.md) — 用项目 Makefile 完整构建并启动内核。
+- [Make](make.md) — 用项目 Makefile 完整构建并启动内核。

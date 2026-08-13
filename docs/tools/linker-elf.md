@@ -506,5 +506,4 @@ make qemu ROOTFS=easyfs FS_LIST="easyfs devtmpfs" TEST=fvsh
 理解 linker 和 ELF 后，可以继续读：
 
 - [交叉编译器](cross-compiler.md) — 理解 `riscv64-elf-gcc`、`objdump`、`readelf` 从哪里来；
-- [总览](../chapters/00-overview.md) — 把 linker 入口放回 FrostVistaOS 的整体阅读路线；
-- [启动](../chapters/01-boot.md) — 顺着 `_start` 进入内核启动流程。
+- [QEMU](qemu.md) — 顺着 `kernel.elf` 看内核如何在 QEMU 中启动运行。
