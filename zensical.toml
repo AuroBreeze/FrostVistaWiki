@@ -22,7 +22,7 @@ site_description = "A new project generated from the default template project."
 # The site_author attribute. This is used in the HTML head element.
 #
 # Read more: https://zensical.org/docs/setup/basics/#site_author
-site_author = "<your name here>"
+site_author = "AuroBreeze"
 
 repo_url = "https://github.com/AuroBreeze/FrostVistaWiki"
 repo_name = "AuroBreeze/FrostVistaWiki"
@@ -52,6 +52,13 @@ Copyright &copy; 2026 The authors
 #   { "Markdown in 5min" = "markdown.md" },
 # ]
 nav = [
+  { "Overview" = [
+    {"Philosophy" = "overview/Philosophy.md"},
+    {"Architecture" = "overview/Architecture.md"},
+  ] },
+  {"Boot & Architecture" = [
+    {"RISC-V Boot Flow" = "Boot & Architecture/RISC-V Boot Flow.md"}
+  ]},
   { "工具" = [
     { "Make" = "tools/make.md" },
     { "交叉编译器" = "tools/cross-compiler.md" },
