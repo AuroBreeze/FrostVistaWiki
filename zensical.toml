@@ -57,7 +57,8 @@ nav = [
     {"Architecture" = "overview/Architecture.md"},
   ] },
   {"Boot & Architecture" = [
-    {"RISC-V Boot Flow" = "Boot & Architecture/RISC-V Boot Flow.md"}
+    {"RISC-V Boot Flow" = "Boot & Architecture/RISC-V Boot Flow.md"},
+    {"Trap Handling" = "Boot & Architecture/Trap Handling.md"},
   ]},
   { "工具" = [
     { "Make" = "tools/make.md" },
