@@ -1,7 +1,5 @@
 ---
 icon: lucide/home
-hide:
-  - navigation
 ---
 
 # FrostVista Wiki
