@@ -1,4 +1,6 @@
-
+---
+icon: lucide/route
+---
 
 # RISC-V Boot Flow
 
@@ -9,9 +11,10 @@
 
 ## BOOT
 
-`FrostVista`将`Booting`时期分为了两个阶段，第一个阶段是无内存管理的阶段，第二个阶段就是有内存管理的阶段
+!!! info "BOOT"
+    `FrostVista`将`Booting`时期分为了两个阶段，第一个阶段是无内存管理的阶段，第二个阶段就是有内存管理的阶段
 
-划分两个阶段的主要原因: 启用分页前需要内存，此时获取的内存地址为`PA`，而此时`FrostVista`选择不进行完整的内存管理，在分页启用后，内核的主要执行环境切换到了高半区虚拟地址，因此物理内存管理器最好直接向上层提供可访问的内核虚拟地址(`VA`)，而不是让整个内核到处进行 **PA → VA** 转换。
+    划分两个阶段的主要原因: 启用分页前需要内存，此时获取的内存地址为`PA`，而此时`FrostVista`选择不进行完整的内存管理，在分页启用后，内核的主要执行环境切换到了高半区虚拟地址，因此物理内存管理器最好直接向上层提供可访问的内核虚拟地址(`VA`)，而不是让整个内核到处进行 **PA → VA** 转换。
 
 启动流程图：
 
@@ -49,8 +52,10 @@ MEMORY
 }
 ```
 
-VMA = 链接器认为程序运行的位置
-LMA = 程序实际加载的位置
+| 地址 | 含义 |
+|---|---|
+| VMA | 链接器认为程序运行的位置 |
+| LMA | 程序实际加载的位置 |
 
 !!! warning "静态数据问题"
     如果没有设置`VMA`为`0xffffffc080000000`，在内核编写过程中的**静态数据**将会设置为物理地址，在访问时可能会导致访问页未映射的问题(如果使用高半区映射)
@@ -65,13 +70,12 @@ LMA = 程序实际加载的位置
 
 进入 start.S 时:
 
-- _start.S被装载进入低地址空间`0x80000000`
-- Paging 尚未启用
-- Paging 未启用时，S-mode 下的地址转换不会产生正常的分页虚拟地址转换，因此内核使用的地址可以直接对应当前物理地址空间。
-- Kernel 仍然运行在 Low Address
-- .bss 被清零
-- 建立早期 Stack
-- 准备 C Runtime Environment
+| 启动状态 | 说明 |
+|---|---|
+| `_start.S`被装载进入低地址空间`0x80000000` | Paging 尚未启用 |
+| Paging 未启用时，S-mode 下的地址转换不会产生正常的分页虚拟地址转换，因此内核使用的地址可以直接对应当前物理地址空间。 | Kernel 仍然运行在 Low Address |
+| `.bss` 被清零 | 建立早期 Stack |
+| 准备 C Runtime Environment | |
 
 start.S 最主要的作用还是及时的准备一个可用的C语言环境，及时脱离使用汇编进行编程。
 
@@ -88,7 +92,12 @@ start.S 完成后，会使用相对寻址，进入到`mstart`中，开始进行`
 
 可以简单列为：
 
-```
+| 初始化步骤 | 内容 |
+|---|---|
+| `mstart()` | M-Mode Trap Handler；Address Space Protection；Interrupt Delegation；CPU ID；CLINT Timer；Prepare S-Mode |
+| Prepare S-Mode | `mepc = s_mode_start`；`mstatus` |
+
+```text
 mstart()
 ├── M-Mode Trap Handler
 ├── Address Space Protection
@@ -109,7 +118,11 @@ mstart()
 
 `FrostVista`开始初始化`Kernel`所需的基本硬件环境和内存管理：
 
-```
+| 初始化步骤 | 内容 |
+|---|---|
+| `s_mode_start()` | Trap Initialization；UART Initialization；Kernel Page Table；PLIC Initialization；Timer Initialization |
+
+```text
 s_mode_start()
 ├── Trap Initialization
 ├── UART Initialization
@@ -134,7 +147,7 @@ s_mode_start()
 
 > 使用指针切割的空间并不会很多，只会映射前期必要的空间，比如页表使用的空间，指针切割的空间在后面并不会进行管理，也不会进行释放。
 
-!!! improtant "为什么分页前不进行完整的内存管理"
+!!! important "为什么分页前不进行完整的内存管理"
     需要说明的是，可以不使用指针进行内存切割，直接获取完整内存进行管理，关于为什么要在分页后才开始完整收集内存进行管理，可以查看开头的解释。
 
 `kvminit()`会初始化页表，将需要映射的区域，进行**恒等映射**和**高半区映射**的**双重映射**。
@@ -194,7 +207,7 @@ Devices
 
 `stvec`保存的是`trap vector`的地址，而这个地址也必须与当前地址转换环境一致。在进入高半区后，中断处理需要重新设置一遍，在未进入高半区时，设置的中断处理的符号地址在物理地址，到高半区后，需要重新设置为高半区。
 
-!!! improtant "为什么同一个设置函数可以设置不同地址空间的trap"
+!!! important "为什么同一个设置函数可以设置不同地址空间的trap"
     在进入高半区后，使用**相对寻址**，此时`pc`已经拉入高半区，此时的相对寻址，将是使用高半区，所以可以设置为高半区的地址空间
 
 在内存管理中，此时获取到的所有的内存就是高半区虚拟地址。
@@ -232,11 +245,12 @@ Low Address
 
 ### Kernel Ready
 
-最后：
+!!! success "Kernel Ready"
+    最后：
 
-`user_init()`会调用`ecall exec("/init")`，执行`init`程序，init程序为`test/`文件夹下的测试程序。
+    `user_init()`会调用`ecall exec("/init")`，执行`init`程序，init程序为`test/`文件夹下的测试程序。
 
-OS进入调度程序。
+    OS进入调度程序。
 
 ```
 procinit()
@@ -256,6 +270,6 @@ user_init()
 scheduler()
 ```
 
-进入：
+    进入：
 
-**Kernel Ready**
+    **Kernel Ready**

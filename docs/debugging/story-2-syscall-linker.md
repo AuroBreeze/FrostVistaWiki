@@ -48,7 +48,8 @@ void syscall() {
 
 我又检查了编译是否出了问题——重新 `make clean && make`，结果一样。
 
-> ⚠️ 到这里我还在 syscall 逻辑里查。完全没想过问题可能根本不在 syscall 层。**症状出现在 syscall，不代表根因在 syscall。**
+!!! warning "不要只看症状出现的层"
+    到这里我还在 syscall 逻辑里查。完全没想过问题可能根本不在 syscall 层。**症状出现在 syscall，不代表根因在 syscall。**
 
 ## 一个不起眼的线索
 
@@ -91,7 +92,8 @@ void syscall() {
     trap handler：尝试打印错误 → 又访问了坏地址 → 静默崩溃
 ```
 
-> ⚠️ 这就是为什么"write 坏了"——不是 write 的 syscall 逻辑有问题，而是 write 要用的 `syscalls` 数组本身变成了一个非法地址。write 只是一个恰好暴露了问题的受害者。
+!!! warning "症状不等于根因"
+    这就是为什么"write 坏了"——不是 write 的 syscall 逻辑有问题，而是 write 要用的 `syscalls` 数组本身变成了一个非法地址。write 只是一个恰好暴露了问题的受害者。
 
 ## 修复
 

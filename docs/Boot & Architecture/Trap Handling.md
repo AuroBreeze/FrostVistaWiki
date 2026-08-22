@@ -1,4 +1,6 @@
-
+---
+icon: lucide/shield-alert
+---
 
 # Trap Handling
 
@@ -39,10 +41,10 @@ flowchart TD
 
 当使用`opensbi`时，`M-mode`下的`mtvec`由`opensbi`进行设置和管理。
 
-!!! improtant "risc-v xtvec寄存器"
+!!! important "risc-v xtvec寄存器"
     `risc-v`架构中，提供了`xtvec`寄存器用来存放对应模式下的中断处理向量地址，其中`x`为对应的模式，在`M-mode`下为`mtvec`，在`S-mode`下为`stvec`
 
-!!! improtant "xtvec xepc xip等"
+!!! important "xtvec xepc xip等"
     `risc-v`中，`x`代表对应的模式下存在的寄存器，比如`xtvec`就分为`mtvec`和`stvec`，`xepc`分为`mepc`和`sepc`等
 
 Trap 发生后，CPU 会自动保存部分执行上下文，包括：
@@ -73,7 +75,7 @@ User / Kernel Execution
 
 `FrostVista`通过使用`mtrapvec.S`, `kernelvec.S`, `Uservec.S`分别实现`M-mode`, `S-mode`, `U-mode`下的中断函数的上下文保存，调用及返回操作。
 
-!!! improtant
+!!! important
     重要的一点，在`M-mode`下默认是不开启分页
 
 ## Trap Context

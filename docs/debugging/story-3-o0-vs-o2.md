@@ -14,7 +14,8 @@ icon: lucide/bug
 
 同一套代码，一个字没改。`-O2` 下一切正常，`-O0` 下直接挂。
 
-> ⚠️ 如果你的直觉是"优化级别越高越容易出 bug"，这个 bug 正好反过来了。**`-O2` 能跑，`-O0` 崩了**——这才是真正让人困惑的地方。
+!!! warning "现象与直觉相反"
+    如果你的直觉是"优化级别越高越容易出 bug"，这个 bug 正好反过来了。**`-O2` 能跑，`-O0` 崩了**——这才是真正让人困惑的地方。
 
 ## 第一个猜测
 
@@ -48,7 +49,8 @@ sp             0xffffffc08003fe30       0xffffffc08003fe30
 
 `sp` 指向 `0xffffffc08003fe30`——这是一个虚拟高地址。
 
-> ⚠️ **M mode 下 MMU 是默认禁用的。** CPU 在 M mode 下执行访存指令时，不经过页表翻译，直接把地址当物理地址用。`0xffffffc08003fe30` 这个物理地址根本不存在——所以 `sd ra, 104(sp)` 试图往一个不存在的物理地址写数据，触发了一个 store access fault。
+!!! warning "M mode 下 MMU 默认禁用"
+    **M mode 下 MMU 是默认禁用的。** CPU 在 M mode 下执行访存指令时，不经过页表翻译，直接把地址当物理地址用。`0xffffffc08003fe30` 这个物理地址根本不存在——所以 `sd ra, 104(sp)` 试图往一个不存在的物理地址写数据，触发了一个 store access fault。
 
 ## 那为什么 `-O2` 没问题？
 
@@ -97,7 +99,8 @@ m_trap:
 
 关键就在这里：**S mode 下的 MMU 开启了页表翻译，所以高地址 `sp` 是合法的。但 M mode 下 MMU 是禁用的，高地址 `sp` 就变成了一个不存在的物理地址。**
 
-> ⚠️ 更深一层的根因：FrostVistaOS 在 M mode 下没有一个独立的、指向物理低地址的栈。M mode 的 trap handler 用的是 S mode 的栈——这在 `-O2` 下碰巧能工作，在 `-O0` 下立刻暴露。
+!!! warning "M mode 使用了错误的栈"
+    更深一层的根因：FrostVistaOS 在 M mode 下没有一个独立的、指向物理低地址的栈。M mode 的 trap handler 用的是 S mode 的栈——这在 `-O2` 下碰巧能工作，在 `-O0` 下立刻暴露。
 
 ## 为什么第一次 timer 设置没问题
 

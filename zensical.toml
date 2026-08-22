@@ -52,6 +52,7 @@ Copyright &copy; 2026 The authors
 #   { "Markdown in 5min" = "markdown.md" },
 # ]
 nav = [
+  { "首页" = "index.md" },
   { "Overview" = [
     {"Philosophy" = "overview/Philosophy.md"},
     {"Architecture" = "overview/Architecture.md"},
@@ -60,6 +61,9 @@ nav = [
     {"RISC-V Boot Flow" = "Boot & Architecture/RISC-V Boot Flow.md"},
     {"Trap Handling" = "Boot & Architecture/Trap Handling.md"},
     {"SBI Interface" = "Boot & Architecture/SBI Interface.md"},
+  ]},
+  {"Memory Management" = [
+    {"Physical Page Allocator" = "Memory Management/Physical Page Allocator.md"},
   ]},
   { "工具" = [
     { "Make" = "tools/make.md" },

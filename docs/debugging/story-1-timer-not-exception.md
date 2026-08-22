@@ -26,13 +26,15 @@ asm volatile("j .");     // 死循环，永远不会回到这里
 
 我检查了 `sepc` 是不是没正确 +4、检查了 `sstatus.SPP` 是不是没清、检查了 `sret` 之后是不是又跳回了 `ecall`。每条都排除了，现象没有任何变化。
 
-> ⚠️ 这里犯了一个方向性错误：**我先入为主地认为所有 trap 都是 exception，根本没有考虑 interrupt 的可能。** 从这一刻起，我就在错误的方向上排查了。
+!!! warning "第一个方向性错误"
+    这里犯了一个方向性错误：**我先入为主地认为所有 trap 都是 exception，根本没有考虑 interrupt 的可能。** 从这一刻起，我就在错误的方向上排查了。
 
 ## 转向
 
 折腾了几个小时后（真就是几个小时），我重新翻开 RISC-V privileged architecture manual，看到 `scause` 的描述里有一句：
 
-> "The Interrupt bit in the `scause` register, bit 63, is set to 1 for interrupts."
+!!! quote "RISC-V Privileged Architecture"
+    "The Interrupt bit in the `scause` register, bit 63, is set to 1 for interrupts."
 
 我突然意识到一件事：我从来没看过 `scause` 的最高位。
 
@@ -84,7 +86,8 @@ U mode: ecall
 
 timer interrupt 就像一个不请自来的客人，在你处理 syscall 的时候直接推门进来——而我的 trap handler 根本没准备接待它。
 
-> ⚠️ 更深层的问题：不光要区分 interrupt/exception，一旦进入 usertrap，你还必须立刻把 `stvec` 从 `uservec` 改成 `kernelvec`。否则如果 trap handler 内部发生了 timer interrupt 或 page fault，CPU 会跳回 `uservec` 的入口——但此时 SP 是内核栈，上下文完全不对。
+!!! warning "Trap 入口必须及时切换"
+    更深层的问题：不光要区分 interrupt/exception，一旦进入 usertrap，你还必须立刻把 `stvec` 从 `uservec` 改成 `kernelvec`。否则如果 trap handler 内部发生了 timer interrupt 或 page fault，CPU 会跳回 `uservec` 的入口——但此时 SP 是内核栈，上下文完全不对。
 
 ## 修复
 
